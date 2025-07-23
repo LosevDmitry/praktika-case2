@@ -1,0 +1,130 @@
+<script>
+//  №1
+
+const day = parseInt(prompt('Введите день Вашего рождения:'));
+const month = parseInt(prompt('Введите месяц Вашего рождения: ')) - 1;// Месяцы начинаются с 0  
+const year = parseInt(prompt('Введите год Вашего рождения: '));
+
+// Создаём объект Date для даты рождения:  
+    const birthDate = new Date(year, month, day);  
+// Получаем текущую дату:     
+    const today = new Date();
+// №2
+let week_days=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+let week_num = birthDate.getDay();
+alert('Ваш день рождения был в ' + week_days[week_num]);
+
+// №3
+if (year % 4 != 0) {
+    alert('Это высокосный год.');
+} else if (year % 100 == 0 ) {
+     if (year % 400 == 0) {
+         alert('Это высокосный год.');
+     } else {
+         alert('Это НЕ высокосный год.');
+     }
+} else {
+     alert('Это НЕ высокосный год.');
+}
+   
+
+// №4
+
+let age = today.getFullYear() - birthDate.getFullYear();  
+const hasBirthdayPassed = today.getMonth() > month || (today.getMonth() === month && today.getDate() >= day);  
+if (!hasBirthdayPassed) {  
+        age--; // Если дня рождения ещё не было в этом году, уменьшают на 1  
+    }  
+
+ alert('Вам - ' + age  + '!');
+
+
+// №5
+function letterArray(letter) {
+        let arrayDay = letter.split('');
+        let fullLetter = new Array(...['','','','','']);
+
+        for (let index = 0; index < arrayDay.length; index++) {
+           
+            if (arrayDay[index] == '0') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += " *   * ";
+                fullLetter[2] += " *   * ";
+                fullLetter[3] += " *   * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '1') {
+                fullLetter[0] += "   * ";
+                fullLetter[1] += "   * ";
+                fullLetter[2] += "   * ";
+                fullLetter[3] += "   * ";
+                fullLetter[4] += "   * ";
+            } else if (arrayDay[index] == '2') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += "     * ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += " *     ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '3') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += "     * ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += "     * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '4') {
+                fullLetter[0] += " *   * ";
+                fullLetter[1] += " *   * ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += "     * ";
+                fullLetter[4] += "     * ";
+            } else if (arrayDay[index] == '5') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += " *     ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += "     * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '6') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += " *     ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += " *   * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '7') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += "     * ";
+                fullLetter[2] += "     * ";
+                fullLetter[3] += "     * ";
+                fullLetter[4] += "     * ";
+            } else if (arrayDay[index] == '8') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += " *   * ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += " *   * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == '9') {
+                fullLetter[0] += " ***** ";
+                fullLetter[1] += " *   * ";
+                fullLetter[2] += " ***** ";
+                fullLetter[3] += "     * ";
+                fullLetter[4] += " ***** ";
+            } else if (arrayDay[index] == ' '){
+                fullLetter[0] += "   ";
+                fullLetter[1] += "   ";
+                fullLetter[2] += "   ";
+                fullLetter[3] += "   ";
+                fullLetter[4] += "   ";
+            }     
+        }      
+
+        let dateText = '\n';
+        for (let index = 0; index < fullLetter.length; index++) {
+            dateText = dateText + fullLetter[index] + '\n';      
+        }
+
+    return dateText;
+} 
+
+console.log(letterArray(String(day).padStart(2, '0') + ' ' +  String(month+1).padStart(2, '0') + ' ' + (year)));
+
+</script>
+
+
